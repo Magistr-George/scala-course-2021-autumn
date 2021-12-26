@@ -9,14 +9,14 @@ object TopicSpecification extends Properties("Topic"):
   include(RecursionSpecification)
   include(TailRecursionSpecification)
   include(HigherOrderFunctionsSpecification)
-  
+
 end TopicSpecification
 
 object RecursionSpecification extends Properties("Recursion"):
   // Importing arbitraies only
-  import arbitraries.{given Arbitrary[Int]} 
+  import arbitraries.{given Arbitrary[Int]}
   import utils._
-  
+
   property("factorial") = forAll { (n: Int) =>
     Recursion.factorial(n) == modelFactorial(n)
   }

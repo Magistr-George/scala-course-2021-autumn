@@ -43,7 +43,7 @@ object Homework:
 
   object `Boolean Operators`:
 
-    def not(b: Boolean): Boolean = if (b) false else true
+    def not(b: Boolean): Boolean = if b then false else true
 
     def and(left: Boolean, right: Boolean): Boolean = if (left) if (right) true else false else false
 

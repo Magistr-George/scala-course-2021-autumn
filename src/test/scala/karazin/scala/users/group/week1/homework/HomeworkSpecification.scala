@@ -20,9 +20,13 @@ object BooleanOperatorsSpecification extends Properties("Boolean Operators"):
     not(b) == !b
   }
 
-  property("and") = forAll { (pair: (Boolean, Boolean)) =>
+  property("and by value") = forAll { (pair: (Boolean, Boolean)) =>
     val (left, right) = pair
     and(left, right) == (left && right)
+  }
+
+  property("and Call by Name") = propBoolean {
+    and(false, throw Exception("Should not be thrown in and")) == false
   }
 
   property("or") = forAll { (pair: (Boolean, Boolean)) =>
