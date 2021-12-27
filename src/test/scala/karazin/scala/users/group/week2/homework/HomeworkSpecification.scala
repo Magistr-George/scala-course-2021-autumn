@@ -50,28 +50,34 @@ object HomeworkSpecification extends Properties("Homework"):
   }
 
   property("negation") = forAll { (rational: Rational) =>
-    ???
+    -(-rational) == rational
   }
 
   property("addition") = forAll { (left: Rational, right: Rational) =>
-    ???
+    right+(left) == left+(right)
   }
 
   property("subtraction") = forAll { (left: Rational, right: Rational) =>
-    ???
+    right-left == right + (-left)
   }
 
   property("multiplication") = forAll { (left: Rational, right: Rational) =>
-    ???
+    left*right == right*left
   }
 
   property("division") = forAll { (left: Rational, numer: Int, denom: Int) =>
     val right = Rational(if numer == 0 then 1 else numer, abs(denom) + 1)
-    ???
+    right*left/right == left
   }
 
-  property("division by zero") = forAll { (left: Rational, int: Int) =>
-    ???
+  property("division by zero") = throws(classOf[IllegalArgumentException]){
+    val left = Rational(17,5)
+    val right = Rational(0,2)
+    left/right
+  }
+
+  property("Hash code") = forAll { (left: Rational, right: Rational) =>
+    !(left.equals(right)) || left.hashCode() == right.hashCode()
   }
 
 end HomeworkSpecification
