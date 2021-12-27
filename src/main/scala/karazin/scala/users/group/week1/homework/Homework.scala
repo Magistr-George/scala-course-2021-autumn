@@ -45,9 +45,9 @@ object Homework:
 
     def not(b: Boolean): Boolean = if b then false else true
 
-    def and(left: Boolean, right: Boolean): Boolean = if (left) if (right) true else false else false
+    def and(left: Boolean, right: =>Boolean): Boolean = if left then right else false
 
-    def or(left: Boolean, right: Boolean): Boolean = if (left) true else if (right) true else false
+    def or(left: Boolean, right: =>Boolean): Boolean = if left then true else right
 
   end `Boolean Operators`
 
