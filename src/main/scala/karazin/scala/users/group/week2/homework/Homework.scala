@@ -77,6 +77,8 @@ object Homework:
       case _ =>false
     }
 
+    override def hashCode(): Int = numer*31+denom
+      
   end Rational
 
 end Homework

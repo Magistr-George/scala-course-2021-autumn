@@ -70,8 +70,14 @@ object HomeworkSpecification extends Properties("Homework"):
     right*left/right == left
   }
 
-  property("division by zero") = forAll { (left: Rational, int: Int) =>
-    true
+  property("division by zero") = throws(classOf[IllegalArgumentException]){
+    val left = Rational(17,5)
+    val right = Rational(0,2)
+    left/right
+  }
+
+  property("Hash code") = forAll { (left: Rational, right: Rational) =>
+    !(left.equals(right)) || left.hashCode() == right.hashCode()
   }
 
 end HomeworkSpecification
